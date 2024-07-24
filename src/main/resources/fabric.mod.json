@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "anyscale",
+  "version": "${version}",
+  "name": "Anyscale",
+  "description": "Allows you to scale Player List (Y), Scoreboard (Y), Inventories (Y), Hotbar and Chat (Y) seperately, Integrates with Sodium Options",
+  "authors": [],
+  "contact": {},
+  "license": "Apache-2.0",
+  "icon": "assets/anyscale/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.pog5.anyscale.client.AnyscaleClient"
+    ],
+    "main": [
+      "me.pog5.anyscale.Anyscale"
+    ]
+  },
+  "mixins": [
+    "anyscale.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": ">=${minecraft_version}"
+  }
+}
