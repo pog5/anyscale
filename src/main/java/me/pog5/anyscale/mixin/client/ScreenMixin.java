@@ -1,7 +1,9 @@
 package me.pog5.anyscale.mixin.client;
 
+import me.pog5.anyscale.client.AnyscaleClient;
 import me.pog5.anyscale.client.config.AnyscaleConfig;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,15 +28,20 @@ public class ScreenMixin {
                     && !screen.getTitle().contains(Text.translatable("gui.socialInteractions.title"))
                     && !screen.getTitle().contains(Text.translatable("menu.game"))
             ) { // ^^ the easiest way to check if we're in a container: just don't do it for things that aren't a container
+                if (AnyscaleConfig.loadOrCreate().inventory_disables_chat) {
+                    AnyscaleClient.inventory_open = true;
+                }
                 float scale = AnyscaleConfig.loadOrCreate().menu_scale;
                 MinecraftClient.getInstance().getWindow().setScaleFactor(baseScale * scale);
             } else {
                 MinecraftClient.getInstance().getWindow().setScaleFactor(baseScale);
+                AnyscaleClient.inventory_open = false;
             }
         }
         if (screen == null) {
             MinecraftClient.getInstance().getWindow().setScaleFactor(baseScale);
             MinecraftClient.getInstance().onResolutionChanged();
+            AnyscaleClient.inventory_open = false;
         }
     }
 }

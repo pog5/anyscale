@@ -6,6 +6,7 @@ import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
 import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
 import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
+import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
 import me.pog5.anyscale.client.AnyscaleClient;
 import net.minecraft.text.Text;
 
@@ -65,9 +66,19 @@ public class ConfigGUIBuilder {
                         .setName(Text.translatable("Chat Scale"))
                         .setTooltip(Text.translatable("Chatbox and Chat messages scaling, gets divided by 100 (350 -> 3.5)"))
                         .setControl(option -> new SliderControl(option, 0, 500, 5, x->Text.literal( x==0 ? "Disabled" : String.valueOf((float) x/100)))) // ==32?"Vanilla":(x==256?"Keep All":x+" chunks")
-                        .setImpact(OptionImpact.VARIES)
+                        .setImpact(OptionImpact.LOW)
                         .setEnabled(AnyscaleClient.IS_ENABLEED)
                         .setBinding((opts, value) -> opts.chat_scale = (float) value / 100, opts -> (int) (opts.chat_scale * 100))
+                        .setFlags()
+                        .build()
+                )
+                .add(OptionImpl.createBuilder(boolean.class, store)
+                        .setName(Text.translatable("Opening a inventory disables chat"))
+                        .setTooltip(Text.translatable("Disable chat when a inventory opens"))
+                        .setControl(TickBoxControl::new) // ==32?"Vanilla":(x==256?"Keep All":x+" chunks")
+                        .setImpact(OptionImpact.LOW)
+                        .setEnabled(AnyscaleClient.IS_ENABLEED)
+                        .setBinding((opts, value) -> opts.inventory_disables_chat = value, opts -> opts.inventory_disables_chat)
                         .setFlags()
                         .build()
                 )

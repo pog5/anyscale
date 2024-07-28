@@ -20,6 +20,7 @@ public class AnyscaleConfig {
     public float scoreboard_scale = 1;
     public float hotbar_scale = 1;
     public float chat_scale = 1;
+    public boolean inventory_disables_chat = false;
 
     private static final Gson GSON = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
