@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "anyscale",
-  "version": "${version}",
+  "version": "${version}-${minecraft_version}",
   "name": "Anyscale",
-  "description": "Allows you to scale Player List (Y), Scoreboard (Y), Inventories (Y), Hotbar and Chat (Y) seperately, Integrates with Sodium Options",
+  "description": "A mod that lets you scale your Chat, Player List (TAB), Scoreboard (Sidebar), Inventories (including chests) and your hotbar, to any fractional value!",
   "authors": [],
   "contact": {},
   "license": "Apache-2.0",
@@ -17,12 +17,16 @@
       "me.pog5.anyscale.Anyscale"
     ]
   },
+  "accessWidener" : "anyscale.accesswidener",
   "mixins": [
     "anyscale.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": ">=1.20.1 <1.20.5"
+    "minecraft": ">=${minecraft_version}"
+  },
+  "recommends": {
+    "sodium": ">=0.5.8"
   }
 }
