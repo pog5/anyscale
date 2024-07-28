@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class ChatHudMixin {
 
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;getChatScale()D"))
-    public double getChatScale(ChatHud instance, Operation<Double> original) {
+    public double Anyscale$spoofChatScale(ChatHud instance, Operation<Double> original) {
         return AnyscaleConfig.loadOrCreate().chat_scale;
     }
 

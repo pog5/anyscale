@@ -10,7 +10,6 @@
     "client.InGameHudAccessor",
     "client.InGameHudMixin",
     "client.ScreenMixin",
-    "client.InventoryScreenMixin",
     "client.PlayerListEntryMixin",
     "client.PlayerlistMixin",
     "client.SodiumOptionsGUIMixin"

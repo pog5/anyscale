@@ -7,7 +7,6 @@ import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
 import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.pog5.anyscale.client.AnyscaleClient;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
@@ -15,11 +14,23 @@ import java.util.List;
 
 public class ConfigGUIBuilder {
     private static final AnyscaleConfigStore store = new AnyscaleConfigStore();
-    public static OptionPage addAnyscaleGui() {
+    public static OptionPage Anyscale$buildOptionsPage() {
         List<OptionGroup> groups = new ArrayList<>();
         groups.add(OptionGroup.createBuilder()
                 .add(OptionImpl.createBuilder(int.class, store)
-                        .setName(Text.translatable("anyscale.config.menu_scale"))
+                        .setName(Text.translatable("Base (Menu) Scale"))
+                        .setTooltip(Text.translatable("This value is the base GUI scale, the same from General, except more detailed. All other values here are based on top of it. It gets divided by 100 (350 -> 3.5). Requires you to close the current menu and open it again to take effect."))
+                        .setControl(option -> new SliderControl(option, 50, 500, 5, x->Text.literal(String.valueOf((float) x/100)))) // ==32?"Vanilla":(x==256?"Keep All":x+" chunks")
+                        .setImpact(OptionImpact.LOW)
+                        .setEnabled(AnyscaleClient.IS_ENABLEED)
+                        .setBinding((opts, value) -> {
+                            opts.base_scale = (float) value / 100;
+                        }, opts -> (int) (opts.base_scale * 100))
+                        .setFlags()
+                        .build()
+                )
+                .add(OptionImpl.createBuilder(int.class, store)
+                        .setName(Text.translatable("Inventory Scale"))
                         .setTooltip(Text.translatable("This value controls the size of (Ender) Chests, Barrels, Hoppers, Inventories, etc... It gets divided by 100 (350 -> 3.5). Requires you to close the current menu and open it again to take effect."))
                         .setControl(option -> new SliderControl(option, 50, 500, 5, x->Text.literal(String.valueOf((float) x/100)))) // ==32?"Vanilla":(x==256?"Keep All":x+" chunks")
                         .setImpact(OptionImpact.LOW)

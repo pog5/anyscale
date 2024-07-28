@@ -20,8 +20,8 @@ public class SodiumOptionsGUIMixin {
     private List<OptionPage> pages;
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void addAnyscaleOptions(Screen prevScreen, CallbackInfo ci) {
-        OptionPage page = ConfigGUIBuilder.addAnyscaleGui();
+    private void Anyscale$addOptionsPage(Screen prevScreen, CallbackInfo ci) {
+        OptionPage page = ConfigGUIBuilder.Anyscale$buildOptionsPage();
         this.pages.add(page);
     }
 }

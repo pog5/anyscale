@@ -14,12 +14,12 @@ import java.nio.file.Path;
 
 public class AnyscaleConfig {
     //The options
+    public float base_scale = 2;
     public float menu_scale = 1;
     public float playerlist_scale = 1;
     public float scoreboard_scale = 1;
     public float hotbar_scale = 1;
     public float chat_scale = 1;
-    public float scoreboard_offset = 1;
 
     private static final Gson GSON = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
