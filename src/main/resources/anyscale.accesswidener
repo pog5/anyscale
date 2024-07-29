@@ -1,2 +1,3 @@
 accessWidener    v2    named
-accessible    method    net/minecraft/client/gui/hud/InGameHud    method_55439    (Lnet/minecraft/scoreboard/Scoreboard;Lnet/minecraft/scoreboard/number/NumberFormat;Lnet/minecraft/scoreboard/ScoreboardEntry;)Lnet/minecraft/client/gui/hud/InGameHud$SidebarEntry;
+accessible method squeek/appleskin/client/HUDOverlayHandler enableAlpha (F)V
+#accessible field squeek/appleskin/client/HUDOverlayHandler needDisableBlend Z

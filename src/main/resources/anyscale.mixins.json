@@ -4,14 +4,15 @@
   "package": "me.pog5.anyscale.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "client.AppleSkinMixin"
   ],
   "client": [
     "client.ChatHudMixin",
     "client.InGameHudAccessor",
     "client.InGameHudMixin",
-    "client.ScreenMixin",
     "client.PlayerListEntryMixin",
     "client.PlayerlistMixin",
+    "client.ScreenMixin",
     "client.SodiumOptionsGUIMixin"
   ],
   "injectors": {

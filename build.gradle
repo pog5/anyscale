@@ -3,6 +3,10 @@ plugins {
     id 'maven-publish'
 }
 
+loom {
+    accessWidenerPath = file("src/main/resources/anyscale.accesswidener")
+}
+
 version = project.mod_version
 group = project.maven_group
 minecraft_version = project.minecraft_version
@@ -13,6 +17,7 @@ base {
 
 
 repositories {
+    maven { url = "https://maven.bawnorton.com/releases" }
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
     // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -37,11 +42,18 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+    // Makes mixin development easier, or so i've heard
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.4.0")))
+    include(implementation(annotationProcessor("com.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.6")))
+
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Sodium, so we can integrate into the menu
     modImplementation "maven.modrinth:sodium:mc1.20.1-0.5.11"
+
+    // AppleSkin
+    modImplementation "maven.modrinth:appleskin:2.5.1+mc1.20"
 }
 
 processResources {
