@@ -44,7 +44,7 @@ dependencies {
 
     // Makes mixin development easier, or so i've heard
     include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.4.0")))
-    include(implementation(annotationProcessor("com.github.bawnorton:mixinsquared-fabric:0.2.0-beta.6")))
+    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.6")))
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
