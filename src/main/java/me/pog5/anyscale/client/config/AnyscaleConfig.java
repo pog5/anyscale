@@ -9,11 +9,13 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class AnyscaleConfig {
-    //The options
+    // The options
     public float base_scale = 2;
     public float menu_scale = 1;
     public float playerlist_scale = 1;
@@ -42,15 +44,31 @@ public class AnyscaleConfig {
     }
 
     public void save() {
-        //Unsafe, todo: fixme! needs to be atomic!
+        Path configPath = getConfigPath();
+        Path tempPath = configPath.resolveSibling(configPath.getFileName().toString() + ".tmp");
+
         try {
-            Files.writeString(getConfigPath(), GSON.toJson(this));
+            Path parentDir = configPath.getParent();
+            if (parentDir != null) {
+                Files.createDirectories(parentDir);
+            }
+
+            String json = GSON.toJson(this);
+            Files.writeString(tempPath, json, StandardCharsets.UTF_8);
+            Files.move(tempPath, configPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+            AnyscaleClient.LOGGER.debug("Successfully saved config to {}", configPath);
         } catch (IOException e) {
-            AnyscaleClient.LOGGER.error("Failed to write config file", e);
+            AnyscaleClient.LOGGER.error("Failed to save config file: {}", configPath, e);
+            try {
+                Files.deleteIfExists(tempPath);
+            } catch (IOException cleanupEx) {
+                AnyscaleClient.LOGGER.error("Failed to delete temporary config file: {}", tempPath, cleanupEx);
+                e.addSuppressed(cleanupEx);
+            }
         }
     }
 
-    private static Path getConfigPath() {
+    public static Path getConfigPath() {
         return FabricLoader.getInstance()
                 .getConfigDir()
                 .resolve("anyscale-config.json");

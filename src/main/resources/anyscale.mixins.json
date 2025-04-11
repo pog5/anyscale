@@ -3,9 +3,6 @@
   "minVersion": "0.8",
   "package": "me.pog5.anyscale.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [
-    "client.AppleSkinMixin"
-  ],
   "client": [
     "client.ChatHudMixin",
     "client.InGameHudAccessor",
@@ -13,7 +10,9 @@
     "client.PlayerListEntryMixin",
     "client.PlayerlistMixin",
     "client.ScreenMixin",
-    "client.SodiumOptionsGUIMixin"
+    "client.sodium.SodiumOptionsGUIMixin",
+    "client.appleskin.AppleSkinMixin",
+    "client.sodium.SodiumGameOptionPagesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

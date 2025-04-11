@@ -6,7 +6,6 @@ import me.pog5.anyscale.client.AnyscaleClient;
 import me.pog5.anyscale.client.config.AnyscaleConfig;
 import net.minecraft.client.gui.hud.ChatHud;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = ChatHud.class, priority = 1050)

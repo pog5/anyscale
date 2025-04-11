@@ -1,7 +1,7 @@
-package me.pog5.anyscale.mixin.client;
+package me.pog5.anyscale.mixin.client.sodium;
 
-import me.jellysquid.mods.sodium.client.gui.SodiumOptionsGUI;
-import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
+import net.caffeinemc.mods.sodium.client.gui.SodiumOptionsGUI;
+import net.caffeinemc.mods.sodium.client.gui.options.OptionPage;
 import me.pog5.anyscale.client.config.ConfigGUIBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import org.spongepowered.asm.mixin.Final;

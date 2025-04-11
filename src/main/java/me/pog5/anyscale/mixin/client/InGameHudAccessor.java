@@ -1,5 +1,6 @@
 package me.pog5.anyscale.mixin.client;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.hud.PlayerListHud;
@@ -12,12 +13,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface InGameHudAccessor {
     @Accessor("playerListHud")
     PlayerListHud getPlayerListHud();
-
-    @Accessor("scaledWidth")
-    void setScaledWidth(int scaledWidth);
-
-    @Accessor("scaledHeight")
-    void setScaledHeight(int scaledHeight);
 
     @Invoker("renderScoreboardSidebar")
     void invokeRenderScoreboardSidebar(DrawContext context, ScoreboardObjective objective);
