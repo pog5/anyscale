@@ -1,0 +1,13 @@
+= Anyscale
+pog5 <pixel@nightly.eu.org>
+1.0, April 11th, 2025: Anyscale GitHub README.md
+:toc:
+:icons: font
+
+Yet another GUI/HUD scaling mod for Minecraft: Java Edition, for Fabric.
+
+== Configuration
+
+You can configure this mod by having **Sodium** installed. Anyscale automatically integrates into sodium's menu and makes its own category. Compatibility with Embeddium has not been tested yet.
+
+Alternatively, you can also configure it by (opening and) closing the game, opening up `.minecraft/config/anyscale.json` in your favorite text editor, changing the values manually and then launching the game to see how the changes look like.
