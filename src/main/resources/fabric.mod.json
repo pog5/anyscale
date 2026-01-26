@@ -4,8 +4,12 @@
   "version": "${version}-${minecraft_version}",
   "name": "Anyscale",
   "description": "A mod that lets you scale your Chat, Player List (TAB), Scoreboard (Sidebar), Inventories (including chests) and your hotbar, to any fractional value!",
-  "authors": [],
-  "contact": {},
+  "authors": ["pog5"],
+  "contact": {
+    "sources": "https://github.com/pog5/Anyscale",
+    "issues": "https://github.com/pog5/Anyscale/issues",
+    "homepage": "https://modrinth.com/mod/anyscale"
+  },
   "license": "Apache-2.0",
   "icon": "assets/anyscale/icon.png",
   "environment": "client",
@@ -15,9 +19,11 @@
     ],
     "main": [
       "me.pog5.anyscale.Anyscale"
+    ],
+    "sodium:config_api_user": [
+      "me.pog5.anyscale.client.config.ConfigGUIBuilder"
     ]
   },
-  "accessWidener" : "anyscale.accesswidener",
   "mixins": [
     "anyscale.mixins.json"
   ],
@@ -27,6 +33,6 @@
     "minecraft": ">=${minecraft_version}"
   },
   "recommends": {
-    "sodium": ">=0.5.8"
+    "sodium": ">=0.8.2"
   }
 }

@@ -1,3 +1,8 @@
-accessWidener    v2    named
-#accessible method squeek/appleskin/client/HUDOverlayHandler enableAlpha (F)V
-#accessible field squeek/appleskin/client/HUDOverlayHandler needDisableBlend Z
+accessWidener v1 named
+accessible class net/minecraft/client/gui/render/GuiRenderer$AtlasPosition
+accessible field net/minecraft/client/gui/render/GuiRenderer$AtlasPosition lastAnimatedOnFrame I
+accessible field net/minecraft/client/gui/render/GuiRenderer$AtlasPosition x I
+accessible field net/minecraft/client/gui/render/GuiRenderer$AtlasPosition y I
+accessible field net/minecraft/client/gui/render/GuiRenderer$AtlasPosition u F
+accessible field net/minecraft/client/gui/render/GuiRenderer$AtlasPosition v F
+accessible method net/minecraft/client/gui/render/GuiRenderer$AtlasPosition <init> (IIFFI)V

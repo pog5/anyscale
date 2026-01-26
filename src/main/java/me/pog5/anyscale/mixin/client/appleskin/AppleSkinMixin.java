@@ -3,12 +3,11 @@ package me.pog5.anyscale.mixin.client.appleskin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.pog5.anyscale.client.config.AnyscaleConfig;
-import net.minecraft.client.util.Window;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import squeek.appleskin.client.HUDOverlayHandler;
+//import squeek.appleskin.client.HUDOverlayHandler;
 
-@Mixin(value = HUDOverlayHandler.class, priority = 1055)
+//@Mixin(value = HUDOverlayHandler.class, priority = 1055)
 public class AppleSkinMixin {
 //
 //    @WrapOperation(method = "onPreRender", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/Window;getScaledWidth()I"))

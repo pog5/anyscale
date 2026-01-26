@@ -7,8 +7,7 @@ import org.slf4j.LoggerFactory;
 import static me.pog5.anyscale.client.config.AnyscaleConfig.getConfigPath;
 
 public class Anyscale implements ModInitializer {
-    public static final Logger LOGGER = LoggerFactory.getLogger("anyscale");
-
+    public static final Logger LOGGER = LoggerFactory.getLogger("Anyscale");
     @Override
     public void onInitialize() {
         try {

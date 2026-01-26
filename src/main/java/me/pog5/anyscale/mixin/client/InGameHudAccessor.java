@@ -1,19 +1,19 @@
 package me.pog5.anyscale.mixin.client;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.gui.hud.PlayerListHud;
-import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.PlayerTabOverlay;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Mixin(InGameHud.class)
+@Mixin(Gui.class)
 public interface InGameHudAccessor {
-    @Accessor("playerListHud")
-    PlayerListHud getPlayerListHud();
+    @Accessor("tabList")
+    PlayerTabOverlay getPlayerListHud();
 
     @Invoker("renderScoreboardSidebar")
-    void invokeRenderScoreboardSidebar(DrawContext context, ScoreboardObjective objective);
+    void invokeRenderScoreboardSidebar(GuiGraphics context, DeltaTracker objective);
 }

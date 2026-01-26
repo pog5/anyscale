@@ -1,13 +1,9 @@
 plugins {
-    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
     id 'maven-publish'
 }
 
-loom {
-    accessWidenerPath = file("src/main/resources/anyscale.accesswidener")
-}
-
-version = project.mod_version + "+" + project.minecraft_version
+version = project.mod_version
 group = project.maven_group
 minecraft_version = project.minecraft_version
 
@@ -18,11 +14,6 @@ base {
 
 repositories {
     maven { url = "https://maven.bawnorton.com/releases" }
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
     exclusiveContent {
         forRepository {
             maven {
@@ -34,26 +25,28 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
+    maven {
+        name "CaffeineMC"
+        url "https://maven.caffeinemc.net/releases"
+    }
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/anyscale.accesswidener")
 }
 
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+//    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // Makes mixin development easier, or so i've heard
-    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.4.0")))
-    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.6")))
-
     // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    // Sodium, so we can integrate into the menu
-    modImplementation "maven.modrinth:sodium:${sodium_version}"
-
-    // AppleSkin
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabricapi_version}"
+//    implementation "net.caffeinemc:sodium-fabric-api:${sodium_api_version}"
     modImplementation "maven.modrinth:appleskin:${appleskin_version}"
+    modImplementation "maven.modrinth:sodium:${sodium_version}"
 }
 
 processResources {
@@ -81,12 +74,6 @@ java {
 
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}" }
-    }
 }
 
 // configure the maven publication
